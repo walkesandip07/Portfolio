@@ -5,70 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandip Walke | Portfolio</title>
   <style>
-    /* 🌙 Base Styles */
+    /* Global Theme */
     :root {
-      --bg-color: #121212;
-      --text-color: #ffffff;
+      --bg-color: #0d1117;
+      --text-color: #e6edf3;
       --accent-color: #00c2ff;
-      --card-bg: rgba(255, 255, 255, 0.1);
-    }
-
-    [data-theme="light"] {
-      --bg-color: #f7f9fc;
-      --text-color: #121212;
-      --card-bg: rgba(0, 0, 0, 0.05);
+      --card-bg: #161b22;
+      --border-color: #30363d;
     }
 
     body {
       font-family: "Poppins", sans-serif;
-      background: var(--bg-color) url('https://images.unsplash.com/photo-1527430253228-e93688616381?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-      background-size: cover;
+      background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
       padding: 0;
-      transition: all 0.4s ease;
+      line-height: 1.6;
     }
 
     header {
       text-align: center;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem 1rem;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
       color: var(--accent-color);
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #b6b6b6;
+      font-size: 1.1rem;
     }
 
     nav {
+      margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 1.2rem;
     }
 
     nav a {
-      text-decoration: none;
       color: var(--text-color);
-      font-weight: 500;
+      text-decoration: none;
       border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      transition: 0.3s;
     }
 
     nav a:hover {
       border-bottom: 2px solid var(--accent-color);
-    }
-
-    .toggle-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--accent-color);
-      border: none;
-      border-radius: 20px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: bold;
+      color: var(--accent-color);
     }
 
     section {
@@ -78,24 +70,80 @@
 
     .card {
       background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 1.5rem;
       margin: 1rem auto;
-      max-width: 800px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
+      max-width: 900px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 194, 255, 0.05);
     }
 
-    .card:hover {
-      transform: scale(1.02);
+    h2 {
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    img.profile {
-      width: 180px;
-      height: 180px;
+    h3 {
+      color: var(--accent-color);
+    }
+
+    .profile {
+      display: block;
+      margin: 0 auto;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       border: 3px solid var(--accent-color);
-      margin-top: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .skill {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--accent-color);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    ul.features {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    ul.features li {
+      margin: 0.3rem 0;
+    }
+
+    a.button {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    a.button:hover {
+      background: #008ecf;
     }
 
     img.certificate {
@@ -106,97 +154,119 @@
     }
 
     footer {
+      background: var(--card-bg);
       text-align: center;
       padding: 1rem;
-      background: rgba(0, 0, 0, 0.4);
-      color: #ccc;
+      border-top: 1px solid var(--border-color);
+      color: #b6b6b6;
     }
 
-    a.button {
-      display: inline-block;
-      background: var(--accent-color);
-      color: #fff;
-      padding: 10px 20px;
-      margin-top: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    a.button:hover {
-      background: #008ecf;
+    @media (max-width: 768px) {
+      .card {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <button class="toggle-btn" onclick="toggleTheme()">🌙 Toggle</button>
 
   <header>
     <h1>Sandip Walke</h1>
     <p>Java Developer | Spring Boot | Web Developer</p>
     <nav>
       <a href="#about">About</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Profile Section -->
   <section id="about">
     <div class="card">
       <img src="profile.jpg.jpg" alt="Sandip Walke" class="profile" />
       <h2>About Me</h2>
       <p>
-        I’m a first-year MCA student at Sandip Institute of Engineering and Management Studies, Nashik,
-        affiliated with Savitribai Phule Pune University. I’m passionate about software and web development.
-        I specialize in Java, Spring Boot, and full-stack web development.
+        I am a first-year MCA student at Sandip Institute of Engineering and Management Studies, Nashik,
+        affiliated with Savitribai Phule Pune University. I’m passionate about building scalable, secure, and 
+        modern web applications using Java and Spring Boot.
       </p>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+      <span class="skill">Java</span>
+      <span class="skill">C++</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">Spring Boot</span>
+      <span class="skill">Spring MVC</span>
+      <span class="skill">Spring Data JPA</span>
+      <span class="skill">Spring Security</span>
+      <span class="skill">Thymeleaf</span>
+      <span class="skill">MySQL</span>
+      <span class="skill">GitHub</span>
+      <span class="skill">IntelliJ IDEA</span>
+      <span class="skill">VS Code</span>
+      <span class="skill">Postman</span>
+    </div>
+  </section>
+
   <section id="projects">
     <h2>My Projects</h2>
 
     <div class="card">
       <h3>🌦️ RainAlert System</h3>
-      <p>
-        A web app that forecasts rain and provides agricultural suggestions using NASA and Open Metro APIs.
-        It helps farmers, event planners, and the public prepare in advance.
-      </p>
-      <a class="button" href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank">View Project</a>
+      <p><strong>Description:</strong> A smart weather forecasting web app that predicts rain and provides agricultural and event-based suggestions using NASA and Open Metro APIs.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul class="features">
+        <li>Uses NASA and OpenMetro APIs for real-time rain forecasting</li>
+        <li>Helps farmers and event planners with advance preparation</li>
+        <li>Displays dynamic weather data and recommendations</li>
+      </ul>
+      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring MVC, MySQL, Thymeleaf, APIs</p>
+      <a href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank" class="button">View Project</a>
     </div>
 
     <div class="card">
       <h3>🧾 Customer Complaint Handling System</h3>
-      <p>
-        Tracks and manages customer complaints with auto-generated IDs. Improves efficiency and transparency.
-      </p>
-      <a class="button" href="https://github.com/walkesandip07/CCHS" target="_blank">View Project</a>
+      <p><strong>Description:</strong> A secure web platform for customers to register, track, and resolve complaints efficiently.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul class="features">
+        <li>Auto-generates unique complaint IDs</li>
+        <li>Tracks complaint history and status</li>
+        <li>Improves complaint handling efficiency and transparency</li>
+      </ul>
+      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring Data JPA, MySQL, Thymeleaf</p>
+      <a href="https://github.com/walkesandip07/CCHS" target="_blank" class="button">View Project</a>
     </div>
 
     <div class="card">
       <h3>📔 MyDayLog – Personal Diary App</h3>
-      <p>
-        A secure web-based personal diary to log achievements, goals, and daily reflections using Spring Boot,
-        Thymeleaf, and MySQL.
-      </p>
+      <p><strong>Description:</strong> A secure personal diary web app to record achievements, goals, and daily reflections.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul class="features">
+        <li>User authentication with Spring Security</li>
+        <li>Data stored safely in MySQL</li>
+        <li>Simple and elegant UI using Thymeleaf templates</li>
+      </ul>
+      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring Security, MySQL, Thymeleaf</p>
     </div>
   </section>
 
-  <!-- Certificates Section -->
   <section id="certificates">
     <h2>Certificates</h2>
-    <div class="card">
+    <div class="card" style="text-align:center;">
       <h3>🚀 NASA Hackathon 2025 (Participation)</h3>
       <a href="nasa_certificate.jpg" target="_blank">
         <img src="nasa_certificate.jpg" alt="NASA Certificate" class="certificate" />
       </a>
     </div>
 
-    <div class="card">
+    <div class="card" style="text-align:center;">
       <h3>💻 Java Full Stack Course - Code for Success</h3>
       <a href="java_certificate.jpg" target="_blank">
         <img src="java_certificate.jpg" alt="Java Certificate" class="certificate" />
@@ -204,31 +274,18 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:walkesandip57@gmail.com">walkesandip57@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/walkesandip07" target="_blank">github.com/walkesandip07</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sandip-walke-270849267/" target="_blank">LinkedIn Profile</a></p>
+    <div class="card" style="text-align:center;">
+      <p>Email: <a href="mailto:walkesandip57@gmail.com" style="color:var(--accent-color)">walkesandip57@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/walkesandip07" target="_blank" style="color:var(--accent-color)">github.com/walkesandip07</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/sandip-walke-270849267/" target="_blank" style="color:var(--accent-color)">LinkedIn Profile</a></p>
     </div>
   </section>
 
   <footer>
     <p>© 2025 Sandip Walke. All rights reserved.</p>
   </footer>
-
-  <script>
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.getAttribute("data-theme");
-      if (currentTheme === "light") {
-        body.removeAttribute("data-theme");
-      } else {
-        body.setAttribute("data-theme", "light");
-      }
-    }
-  </script>
 
 </body>
 </html>
