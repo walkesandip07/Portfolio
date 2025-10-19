@@ -3,50 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sandip Walke Portfolio</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome for Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
+  <title>Sandip Walke | Portfolio</title>
   <style>
     :root {
       --primary-color: #0077b5;
-      --bg-color: #f5f5f5;
+      --bg-color: rgba(255,255,255,0.9);
       --text-color: #333;
-      --card-bg: #fff;
-      --dark-bg: #1a1a1a;
+      --card-bg: rgba(255,255,255,0.85);
+      --dark-bg: rgba(26,26,26,0.95);
       --dark-text: #f5f5f5;
       --transition-speed: 0.3s;
     }
 
     [data-theme="dark"] {
-      --bg-color: var(--dark-bg);
-      --text-color: var(--dark-text);
-      --card-bg: #2a2a2a;
+      --bg-color: rgba(26,26,26,0.95);
+      --text-color: #f5f5f5;
+      --card-bg: rgba(42,42,42,0.8);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-
     body {
-      background-color: var(--bg-color);
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: var(--text-color);
-      line-height: 1.6;
-      transition: background-color var(--transition-speed), color var(--transition-speed);
+      transition: all var(--transition-speed);
+      position: relative;
+      z-index: 0;
     }
 
-    .container { max-width: 1000px; margin: auto; padding: 20px; }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.55);
+      z-index: -1;
+    }
+
+    a { color: var(--primary-color); text-decoration: none; }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background-color: var(--bg-color);
+      border-radius: 10px;
+    }
 
     header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
     }
 
-    header h1 { font-size: 2rem; }
-    header h2 { font-weight: 400; font-size: 1rem; color: var(--primary-color); }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+      object-fit: cover;
+    }
 
     .toggle-theme {
       cursor: pointer;
@@ -54,111 +77,139 @@
       color: var(--primary-color);
     }
 
-    section { margin-bottom: 60px; }
+    section { margin-bottom: 50px; }
     h3 { margin-bottom: 20px; color: var(--primary-color); }
 
-    .skills, .projects, .certificates, .contact { display: flex; flex-wrap: wrap; gap: 20px; }
-
-    .skill-card, .project-card, .certificate-card { 
-      background: var(--card-bg); padding: 20px; border-radius: 10px; flex: 1 1 300px; transition: transform 0.3s;
+    .skills, .projects, .certificates, .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-    .skill-card:hover, .project-card:hover, .certificate-card:hover { transform: translateY(-5px); }
 
-    .project-card a { display: inline-block; margin-top: 10px; color: var(--primary-color); text-decoration: none; font-weight: bold; }
+    .skill-card, .project-card, .certificate-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 300px;
+      transition: transform 0.3s;
+      backdrop-filter: blur(6px);
+    }
 
-    footer { text-align: center; padding: 20px; font-size: 0.9rem; }
+    .skill-card:hover, .project-card:hover, .certificate-card:hover {
+      transform: translateY(-5px);
+    }
 
-    .tech-icons i { margin-right: 10px; font-size: 1.5rem; color: var(--primary-color); }
+    .project-card a, .certificate-card a {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .project-card a:hover, .certificate-card a:hover {
+      background-color: #005c8e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    .tech-icons i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .skills, .projects, .certificates, .contact { flex-direction: column; }
+      .container { padding: 15px; }
+      .profile img { width: 80px; height: 80px; }
+    }
   </style>
 </head>
-<body data-theme="light">
-
+<body>
   <div class="container">
-    <!-- Header -->
     <header>
-      <div>
-        <h1>Sandip Walke</h1>
-        <h2>Aspiring Software & Web Developer | Java & Spring Boot Enthusiast</h2>
+      <div class="profile">
+        <img src="profile.jpg" alt="Sandip Walke">
+        <div>
+          <h1>Sandip Walke</h1>
+          <h2>Java & Spring Boot Developer | Web Developer</h2>
+        </div>
       </div>
-      <div class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-adjust"></i></div>
+      <div class="toggle-theme" onclick="toggleTheme()">🌗</div>
     </header>
 
-    <!-- About Me -->
-    <section id="about">
+    <section>
       <h3>About Me</h3>
-      <p>Hello! I’m a first-year MCA student at <strong>Sandip Institute of Engineering and Management Studies, Nashik</strong>, affiliated with Savitribai Phule Pune University. I’m passionate about building web applications using Java and Spring Boot, creating solutions for real-world problems, and constantly learning new technologies to improve my skills.</p>
+      <p>
+        I am an MCA student at Sandip Institute of Engineering and Management, Nashik (affiliated with SPPU).
+        Passionate about software and web development, I enjoy building scalable Java and Spring Boot web applications.
+      </p>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h3>Skills & Technologies</h3>
-      <div class="skills">
-        <div class="skill-card"><i class="fab fa-java tech-icons"></i>Java</div>
-        <div class="skill-card"><i class="fas fa-code tech-icons"></i>C++</div>
-        <div class="skill-card"><i class="fab fa-html5 tech-icons"></i>HTML</div>
-        <div class="skill-card"><i class="fab fa-css3-alt tech-icons"></i>CSS</div>
-        <div class="skill-card"><i class="fab fa-js-square tech-icons"></i>JavaScript</div>
-        <div class="skill-card"><i class="fas fa-cogs tech-icons"></i>Spring Boot, Spring MVC, Spring Data JPA, Spring Security, Thymeleaf</div>
-        <div class="skill-card"><i class="fas fa-database tech-icons"></i>MySQL</div>
-        <div class="skill-card"><i class="fab fa-github tech-icons"></i>GitHub</div>
-        <div class="skill-card"><i class="fas fa-code tech-icons"></i>IntelliJ IDEA, VS Code</div>
-        <div class="skill-card"><i class="fas fa-server tech-icons"></i>Postman & REST APIs</div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
+    <section>
       <h3>Projects</h3>
       <div class="projects">
         <div class="project-card">
-          <h4>RainAlert System</h4>
-          <p>Web application providing real-time rainfall forecasts and agricultural suggestions using NASA and Open-Meteo APIs.</p>
-          <a href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank">View on GitHub</a>
+          <h4>🌦️ RainAlert System</h4>
+          <p>Weather forecasting and alert system using NASA API and Open-Meteo API. Helps farmers and event planners with real-time rainfall predictions.</p>
+          <a href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank">View Project</a>
         </div>
         <div class="project-card">
-          <h4>Customer Complaint Handling System</h4>
-          <p>Secure web app for registering and tracking customer complaints efficiently with automated user IDs.</p>
-          <a href="https://github.com/walkesandip07/CCHS" target="_blank">View on GitHub</a>
+          <h4>💬 Customer Complaint Handling System</h4>
+          <p>Automates complaint registration and tracking. Ensures secure and fast customer support process with auto-generated IDs.</p>
+          <a href="https://github.com/walkesandip07/CCHS" target="_blank">View Project</a>
         </div>
         <div class="project-card">
-          <h4>MyDayLog – Personal Diary</h4>
-          <p>A personal diary web application to securely record daily achievements, goals, and events using Spring Boot.</p>
-          <a href="https://github.com/walkesandip07/MyDayLog" target="_blank">View on GitHub</a>
+          <h4>📘 MyDayLog – Personal Diary</h4>
+          <p>A secure diary web app built with Spring Boot & MySQL to record daily achievements and goals.</p>
         </div>
       </div>
     </section>
 
-    <!-- Certificates -->
-    <section id="certificates">
-      <h3>Certificates & Achievements</h3>
+    <section>
+      <h3>Certificates</h3>
       <div class="certificates">
-        <div class="certificate-card">Java Full Stack Course – Code for Success</div>
-        <div class="certificate-card">NASA Hackathon 2025 – Participation</div>
+        <div class="certificate-card">
+          <h4>🏅 NASA Hackathon 2025</h4>
+          <p>Participated in NASA Hackathon 2025, demonstrating innovation in weather-based systems.</p>
+          <a href="nasa_certificate.jpg" target="_blank">View Certificate</a>
+        </div>
+        <div class="certificate-card">
+          <h4>💻 Java Full Stack Course</h4>
+          <p>Certified in Java Full Stack Development by Code for Success.</p>
+          <a href="java_certificate.jpg" target="_blank">View Certificate</a>
+        </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h3>Contact Me</h3>
-      <div class="contact">
-        <div class="skill-card"><i class="fab fa-linkedin tech-icons"></i><a href="https://www.linkedin.com/in/sandip-walke-270849267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a></div>
-        <div class="skill-card"><i class="fab fa-github tech-icons"></i><a href="https://github.com/walkesandip07" target="_blank">GitHub</a></div>
-        <div class="skill-card"><i class="fas fa-envelope tech-icons"></i>Email: walkesandip57@gmail.com</div>
-      </div>
+    <section>
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:walkesandip57@gmail.com">walkesandip57@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/sandip-walke-270849267" target="_blank">linkedin.com/in/sandip-walke</a></p>
+      <p>GitHub: <a href="https://github.com/walkesandip07" target="_blank">github.com/walkesandip07</a></p>
     </section>
 
     <footer>
-      &copy; 2025 Sandip Walke | Built with ❤️ and Spring Boot enthusiasm
+      <p>© 2025 Sandip Walke | Built with 💙 using HTML, CSS & JavaScript</p>
     </footer>
   </div>
 
-  <!-- JS for Dark/Light Toggle -->
   <script>
     function toggleTheme() {
       const body = document.body;
-      const currentTheme = body.getAttribute('data-theme');
-      body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+      const currentTheme = body.getAttribute("data-theme");
+      body.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
     }
   </script>
 </body>
 </html>
+
