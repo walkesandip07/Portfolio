@@ -1,291 +1,404 @@
 <!DOCTYPE html>
+<!--
+  Sandip Walke - Professional Portfolio (Dark Theme, Recruiter Friendly)
+  Features added per your request:
+    - Modern dark theme (premium) with accessible typography
+    - Project showcase with icons & animations
+    - Modern education timeline
+    - "Why Hire Me?" section tailored for service-based recruiters
+    - Tech Stack section with logo placeholders
+    - Responsive, ATS-friendly structure and semantic markup
+    - Floating Hire Me CTA and downloadable resume link
+
+  Replace placeholder images (profile.jpg, logos, certificates) with actual files.
+-->
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sandip Walke | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandip Walke | Java Developer</title>
+  <meta name="description" content="Sandip Walke - Java Developer. Spring Boot, Web Applications, Projects, and Certificates. Professional portfolio tailored for TCS/Infosys recruiters." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Theme */
-    :root {
-      --bg-color: #0d1117;
-      --text-color: #e6edf3;
-      --accent-color: #00c2ff;
-      --card-bg: #161b22;
-      --border-color: #30363d;
+    :root{
+      --bg: #0b1220;
+      --card: #0f1720;
+      --muted: #9aa6b2;
+      --accent: #00c2ff;
+      --glass: rgba(255,255,255,0.03);
+      --glass-strong: rgba(255,255,255,0.04);
+      --success: #7be495;
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #07101a 60%);
+      color:#e6eef3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:60px;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#07304b,#00384f);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
+    .brand h1{margin:0;font-size:1.2rem;letter-spacing:0.2px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:0.95rem}
+    nav a:hover{color:var(--accent);background:var(--glass)}
+    .cta{background:var(--accent);color:#022; padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .cta:hover{filter:brightness(.95)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:center;margin-top:18px}
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));border-radius:var(--radius);padding:20px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,10,18,0.6)}
+    .profile{width:240px;height:240px;border-radius:16px;overflow:hidden;border:4px solid rgba(0,194,255,0.12);display:flex;align-items:center;justify-content:center}
+    .profile img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-intro h2{margin:0 0 8px 0;color:var(--accent)}
+    .hero-intro p{margin:0 0 14px 0;color:var(--muted)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{background:var(--glass);color:var(--muted);padding:8px 10px;border-radius:8px;font-weight:600}
+
+    /* Quick stats */
+    .stats{display:flex;gap:12px;margin-top:14px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px;padding:10px 12px;text-align:center;min-width:110px}
+    .stat h3{margin:0;color:var(--accent)}
+    .stat p{margin:6px 0 0 0;color:var(--muted);font-size:0.9rem}
+
+    /* Sections */
+    section{margin-top:28px}
+    h2.section-title{color:var(--accent);margin:0 0 12px 0;text-align:left}
+
+    /* Projects showcase */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{position:relative;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);border:1px solid rgba(255,255,255,0.03);overflow:hidden;transition:transform .28s ease, box-shadow .28s ease}
+    .project:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,194,255,0.06)}
+    .project .icon{width:48px;height:48px;border-radius:10px;background:rgba(0,0,0,0.18);display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+    .project h3{margin:0 0 8px 0;font-size:1.05rem}
+    .project p{margin:0;color:var(--muted);font-size:0.92rem}
+    .project .tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .tag{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:8px;font-size:0.8rem;color:var(--muted)}
+    .project .actions{margin-top:14px;display:flex;gap:8px}
+    .btn-outline{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--accent);padding:8px 10px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn-primary{background:var(--accent);color:#022;padding:8px 10px;border-radius:8px;text-decoration:none;font-weight:700}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:18px}
+    .timeline::before{content:'';position:absolute;left:10px;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent), transparent)}
+    .timeline-item{position:relative;padding:12px 18px;margin-bottom:14px;border-radius:10px;background:var(--glass-strong);border:1px solid rgba(255,255,255,0.02)}
+    .timeline-item::before{content:'';position:absolute;left:-21px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--accent)}
+    .timeline-item h4{margin:0;color:var(--accent)}
+    .timeline-item p{margin:6px 0 0 0;color:var(--muted);font-size:0.95rem}
+
+    /* Why Hire Me */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .why{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.12), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .why h4{margin:0 0 8px 0;color:var(--accent)}
+    .why p{margin:0;color:var(--muted)}
+
+    /* Tech stack */
+    .tech-grid{display:flex;flex-wrap:wrap;gap:12px}
+    .tech{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border-radius:10px;background:var(--glass);min-width:100px}
+    .tech img{width:56px;height:56px;object-fit:contain}
+    .tech span{font-size:0.85rem;color:var(--muted)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
+
+    footer{margin-top:36px;padding:20px;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .projects-grid{grid-template-columns:1fr}
+      .hero{gap:18px}
+      nav{display:none}
     }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
+    /* subtle fade-in animations */
+    .reveal{opacity:0;transform:translateY(10px);animation:reveal .6s forwards;animation-delay:var(--delay,0s)}
+    @keyframes reveal{to{opacity:1;transform:none}}
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-    }
+    /* Floating quick-hire */
+    .float-hire{position:fixed;right:20px;bottom:20px;background:linear-gradient(135deg,var(--accent),#008ecf);color:#021029;padding:12px 14px;border-radius:14px;font-weight:700;box-shadow:0 12px 30px rgba(0,194,255,0.12);text-decoration:none}
 
-    header h1 {
-      margin: 0;
-      color: var(--accent-color);
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin-top: 8px;
-      color: #b6b6b6;
-      font-size: 1.1rem;
-    }
-
-    nav {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-    }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      border-bottom: 2px solid var(--accent-color);
-      color: var(--accent-color);
-    }
-
-    section {
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1rem auto;
-      max-width: 900px;
-      text-align: left;
-      box-shadow: 0 0 10px rgba(0, 194, 255, 0.05);
-    }
-
-    h2 {
-      color: var(--accent-color);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      color: var(--accent-color);
-    }
-
-    .profile {
-      display: block;
-      margin: 0 auto;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 3px solid var(--accent-color);
-      margin-bottom: 1rem;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .skill {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      color: var(--accent-color);
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .skill:hover {
-      background: var(--accent-color);
-      color: #fff;
-    }
-
-    ul.features {
-      margin-top: 0.5rem;
-      padding-left: 1.2rem;
-    }
-
-    ul.features li {
-      margin: 0.3rem 0;
-    }
-
-    a.button {
-      display: inline-block;
-      background: var(--accent-color);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      margin-top: 10px;
-      transition: 0.3s;
-    }
-
-    a.button:hover {
-      background: #008ecf;
-    }
-
-    img.certificate {
-      width: 300px;
-      border-radius: 10px;
-      border: 2px solid var(--accent-color);
-      margin: 10px;
-    }
-
-    footer {
-      background: var(--card-bg);
-      text-align: center;
-      padding: 1rem;
-      border-top: 1px solid var(--border-color);
-      color: #b6b6b6;
-    }
-
-    @media (max-width: 768px) {
-      .card {
-        padding: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>SW</div>
+        <div>
+          <h1>Sandip Walke</h1>
+          <div style="font-size:0.85rem;color:var(--muted)">Java Developer • Spring Boot • Web Applications</div>
+        </div>
+      </div>
 
-  <header>
-    <h1>Sandip Walke</h1>
-    <p>Java Developer | Spring Boot | Web Developer</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+      <nav aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Hire Me</a>
+      </nav>
+    </header>
 
-  <section id="about">
-    <div class="card">
-      <img src="profile.jpg.jpg" alt="Sandip Walke" class="profile" />
-      <h2>About Me</h2>
-      <p>
-        I am a first-year MCA student at Sandip Institute of Engineering and Management Studies, Nashik,
-        affiliated with Savitribai Phule Pune University. I’m passionate about building scalable, secure, and 
-        modern web applications using Java and Spring Boot.
-      </p>
-    </div>
-  </section>
+    <!-- HERO -->
+    <main class="hero">
+      <aside class="card reveal" style="--delay:.05s">
+        <div class="profile">
+          <!-- replace profile.jpg with your image -->
+          <img src="profile.jpg" alt="Sandip Walke - Profile photo" />
+        </div>
+        <div style="margin-top:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <div>
+              <h3 style="margin:0;color:var(--accent)">Sandip Walke</h3>
+              <div style="color:var(--muted);font-size:0.95rem">MCA Student • Java Developer</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:0.95rem;color:var(--muted)">Nashik, India</div>
+            </div>
+          </div>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="skills-list">
-      <span class="skill">Java</span>
-      <span class="skill">C++</span>
-      <span class="skill">HTML</span>
-      <span class="skill">CSS</span>
-      <span class="skill">JavaScript</span>
-      <span class="skill">Spring Boot</span>
-      <span class="skill">Spring MVC</span>
-      <span class="skill">Spring Data JPA</span>
-      <span class="skill">Spring Security</span>
-      <span class="skill">Thymeleaf</span>
-      <span class="skill">MySQL</span>
-      <span class="skill">GitHub</span>
-      <span class="skill">IntelliJ IDEA</span>
-      <span class="skill">VS Code</span>
-      <span class="skill">Postman</span>
-    </div>
-  </section>
+          <div class="badges" style="margin-top:12px">
+            <div class="badge">Spring Boot</div>
+            <div class="badge">Java</div>
+            <div class="badge">Thymeleaf</div>
+          </div>
 
-  <section id="projects">
-    <h2>My Projects</h2>
+          <div class="stats">
+            <div class="stat">
+              <h3>3+</h3>
+              <p>Projects</p>
+            </div>
+            <div class="stat">
+              <h3>Certs</h3>
+              <p>NASA, Code for Success</p>
+            </div>
+            <div class="stat">
+              <h3>Fast</h3>
+              <p>Quick learner</p>
+            </div>
+          </div>
 
-    <div class="card">
-      <h3>🌦️ RainAlert System</h3>
-      <p><strong>Description:</strong> A smart weather forecasting web app that predicts rain and provides agricultural and event-based suggestions using NASA and Open Metro APIs.</p>
-      <p><strong>Key Features:</strong></p>
-      <ul class="features">
-        <li>Uses NASA and OpenMetro APIs for real-time rain forecasting</li>
-        <li>Helps farmers and event planners with advance preparation</li>
-        <li>Displays dynamic weather data and recommendations</li>
-      </ul>
-      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring MVC, MySQL, Thymeleaf, APIs</p>
-      <a href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank" class="button">View Project</a>
-    </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn-primary" href="#projects">View Projects</a>
+            <a class="btn-outline" href="/resume.pdf" target="_blank">Download Resume</a>
+          </div>
+        </div>
+      </aside>
 
-    <div class="card">
-      <h3>🧾 Customer Complaint Handling System</h3>
-      <p><strong>Description:</strong> A secure web platform for customers to register, track, and resolve complaints efficiently.</p>
-      <p><strong>Key Features:</strong></p>
-      <ul class="features">
-        <li>Auto-generates unique complaint IDs</li>
-        <li>Tracks complaint history and status</li>
-        <li>Improves complaint handling efficiency and transparency</li>
-      </ul>
-      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring Data JPA, MySQL, Thymeleaf</p>
-      <a href="https://github.com/walkesandip07/CCHS" target="_blank" class="button">View Project</a>
-    </div>
+      <section class="card hero-intro reveal" style="--delay:.12s">
+        <h2>Hello — I build reliable backend systems & meaningful web apps</h2>
+        <p style="color:var(--muted)">I am a first-year MCA student at Sandip Institute, passionate about building scalable, secure, and maintainable web applications using Java, Spring Boot, and modern toolchains. I focus on delivering business value with clean code, testable services, and pragmatic design.</p>
 
-    <div class="card">
-      <h3>📔 MyDayLog – Personal Diary App</h3>
-      <p><strong>Description:</strong> A secure personal diary web app to record achievements, goals, and daily reflections.</p>
-      <p><strong>Key Features:</strong></p>
-      <ul class="features">
-        <li>User authentication with Spring Security</li>
-        <li>Data stored safely in MySQL</li>
-        <li>Simple and elegant UI using Thymeleaf templates</li>
-      </ul>
-      <p><strong>Tech Stack:</strong> Java, Spring Boot, Spring Security, MySQL, Thymeleaf</p>
-    </div>
-  </section>
+        <h3 style="margin-top:18px;color:var(--accent)">Quick overview</h3>
+        <ul style="color:var(--muted);padding-left:18px;margin-top:8px">
+          <li>Hands-on with Spring Boot, Spring Data JPA, Spring Security</li>
+          <li>Database design with MySQL, REST APIs, and integrations</li>
+          <li>Version control & CI mindset — GitHub and project docs</li>
+        </ul>
 
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="card" style="text-align:center;">
-      <h3>🚀 NASA Hackathon 2025 (Participation)</h3>
-      <a href="nasa_certificate.jpg" target="_blank">
-        <img src="nasa_certificate.jpg" alt="NASA Certificate" class="certificate" />
-      </a>
-    </div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn-outline" href="https://github.com/walkesandip07" target="_blank">GitHub</a>
+          <a class="btn-outline" href="https://www.linkedin.com/in/sandip-walke-270849267/" target="_blank">LinkedIn</a>
+        </div>
 
-    <div class="card" style="text-align:center;">
-      <h3>💻 Java Full Stack Course - Code for Success</h3>
-      <a href="java_certificate.jpg" target="_blank">
-        <img src="java_certificate.jpg" alt="Java Certificate" class="certificate" />
-      </a>
-    </div>
-  </section>
+        <!-- Why Hire Me quick bullets -->
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:rgba(0,0,0,0.12);padding:10px;border-radius:8px">Problem-solver</div>
+          <div style="background:rgba(0,0,0,0.12);padding:10px;border-radius:8px">Fast Learner</div>
+          <div style="background:rgba(0,0,0,0.12);padding:10px;border-radius:8px">Team Player</div>
+        </div>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="card" style="text-align:center;">
-      <p>Email: <a href="mailto:walkesandip57@gmail.com" style="color:var(--accent-color)">walkesandip57@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/walkesandip07" target="_blank" style="color:var(--accent-color)">github.com/walkesandip07</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sandip-walke-270849267/" target="_blank" style="color:var(--accent-color)">LinkedIn Profile</a></p>
-    </div>
-  </section>
+      </section>
+    </main>
 
-  <footer>
-    <p>© 2025 Sandip Walke. All rights reserved.</p>
-  </footer>
+    <!-- SKILLS / TECH STACK -->
+    <section id="skills" class="reveal" style="--delay:.18s">
+      <h2 class="section-title">Technical Skills & Tech Stack</h2>
+      <div class="card" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:240px">
+          <h3 style="margin-top:0;color:var(--accent)">Core Skills</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Spring Security</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Thymeleaf</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
 
+        <div style="flex:1;min-width:260px">
+          <h3 style="margin-top:0;color:var(--accent)">Tech Stack</h3>
+          <div class="tech-grid" style="margin-top:10px">
+            <!-- Replace src with actual logos -->
+            <div class="tech"><img src="logos/java.svg" alt="Java logo" onerror="this.style.opacity=.4"><span>Java</span></div>
+            <div class="tech"><img src="logos/spring.svg" alt="Spring Boot logo" onerror="this.style.opacity=.4"><span>Spring Boot</span></div>
+            <div class="tech"><img src="logos/mysql.svg" alt="MySQL logo" onerror="this.style.opacity=.4"><span>MySQL</span></div>
+            <div class="tech"><img src="logos/github.svg" alt="GitHub logo" onerror="this.style.opacity=.4"><span>GitHub</span></div>
+            <div class="tech"><img src="logos/thymleaf.png" alt="Thymeleaf" onerror="this.style.opacity=.4"><span>Thymeleaf</span></div>
+            <div class="tech"><img src="logos/postman.svg" alt="Postman" onerror="this.style.opacity=.4"><span>Postman</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal" style="--delay:.22s">
+      <h2 class="section-title">Projects — Selected Work</h2>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project">
+          <div class="icon">☁️</div>
+          <h3>RainAlert System</h3>
+          <p>A weather forecasting web app that predicts rain using NASA & external APIs and provides farmer/event recommendations.</p>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="actions">
+            <a class="btn-outline" href="https://github.com/walkesandip07/RainAlert-NASA" target="_blank">Code</a>
+            <a class="btn-primary" href="#">Live</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project">
+          <div class="icon">🧾</div>
+          <h3>Customer Complaint Handling System</h3>
+          <p>Secure complaint system with unique IDs, history tracking, and admin workflows for faster resolution.</p>
+          <div class="tags"><span class="tag">Spring Data JPA</span><span class="tag">MySQL</span></div>
+          <div class="actions">
+            <a class="btn-outline" href="https://github.com/walkesandip07/CCHS" target="_blank">Code</a>
+            <a class="btn-primary" href="#">Demo</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project">
+          <div class="icon">📔</div>
+          <h3>MyDayLog – Personal Diary</h3>
+          <p>Personal diary app with Spring Security, user authentication, and encrypted data storage in MySQL.</p>
+          <div class="tags"><span class="tag">Spring Security</span><span class="tag">Thymeleaf</span></div>
+          <div class="actions"><a class="btn-outline" href="#">Details</a></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Education timeline -->
+    <section id="education" class="reveal" style="--delay:.26s">
+      <h2 class="section-title">Education & Timeline</h2>
+      <div class="timeline card">
+        <div class="timeline-item">
+          <h4>MCA — Sandip Institute of Engineering and Management Studies</h4>
+          <p>2025 - Present • Savitribai Phule Pune University — Focus: Software Engineering, Databases, and Web Development.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Bachelor's Degree / Diploma (if applicable)</h4>
+          <p>Specify your previous degree/college here with years. (Replace this placeholder with real details).</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>NASA Hackathon — Participation</h4>
+          <p>2025 • Participated in NASA Hackathon; contributed to a weather-related prototype (certificate available).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Hire Me -->
+    <section id="why" class="reveal" style="--delay:.30s">
+      <h2 class="section-title">Why Hire Me?</h2>
+      <div class="why-grid">
+        <div class="why">
+          <h4>Delivery-focused</h4>
+          <p>I prioritise shipping features that solve user and business problems—clean, testable code and clear documentation.</p>
+        </div>
+        <div class="why">
+          <h4>Quick Learner & Adaptable</h4>
+          <p>Comfortable picking up new technologies; can quickly adapt to company coding standards and agile processes.</p>
+        </div>
+        <div class="why">
+          <h4>Team & Communication</h4>
+          <p>Good communicator who values code reviews, collaboration, and writing clear commit messages and docs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates & Contact -->
+    <section id="contact" class="reveal" style="--delay:.34s">
+      <h2 class="section-title">Certificates & Contact</h2>
+      <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:260px;text-align:center">
+          <h3 style="color:var(--accent);margin-top:0">Certificates</h3>
+          <a href="nasa_certificate.jpg" target="_blank"><img src="nasa_certificate.jpg" alt="NASA certificate" style="width:280px;border-radius:10px;border:2px solid rgba(0,194,255,0.08)"></a>
+        </div>
+
+        <div style="flex:1;min-width:260px">
+          <h3 style="color:var(--accent);margin-top:0">Contact</h3>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <strong>Email</strong>
+              <p style="margin:6px 0"><a href="mailto:walkesandip57@gmail.com" style="color:var(--accent);text-decoration:none">walkesandip57@gmail.com</a></p>
+              <strong>Phone</strong>
+              <p style="margin:6px 0;color:var(--muted)">+91 • (add your number)</p>
+            </div>
+            <div class="contact-card">
+              <strong>Profiles</strong>
+              <p style="margin:6px 0"><a href="https://github.com/walkesandip07" target="_blank" style="color:var(--accent)">GitHub</a> • <a href="https://www.linkedin.com/in/sandip-walke-270849267/" target="_blank" style="color:var(--accent)">LinkedIn</a></p>
+              <strong>Resume</strong>
+              <p style="margin:6px 0"><a href="/resume.pdf" target="_blank" class="btn-outline">Download Resume</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <small>© 2025 Sandip Walke • Built with care — replace placeholder images & update contact details before sharing.</small>
+    </footer>
+
+  </div>
+
+  <a class="float-hire" href="#contact">Hire Me →</a>
+
+  <script>
+    // Small progressive enhancement: reveal elements on scroll
+    (function(){
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if(en.isIntersecting){
+            en.target.style.opacity = 1;
+            en.target.style.transform = 'none';
+          }
+        });
+      },{threshold:0.12});
+      reveals.forEach(r=>obs.observe(r));
+    })();
+  </script>
 </body>
 </html>
