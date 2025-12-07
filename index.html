@@ -46,6 +46,18 @@
       padding-bottom:60px;
     }
     .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.card {
+    width: 100%;
+    max-width: 900px;
+    height: auto;           /* FIX: allow auto height */
+    overflow: hidden;       /* FIX: prevents content overflow */
+    box-sizing: border-box; /* FIX: includes padding inside */
+}
 
     /* Header */
     header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0}
@@ -165,7 +177,7 @@
       <aside class="card reveal" style="--delay:.05s">
         <div class="profile">
           <!-- replace profile.jpg with your image -->
-          <img src="logos/java.svg" alt="Java Logo" class="w-40 h-40 object-contain" />
+          <img src="javalogo.jpg" alt="Java Logo" class="w-40 h-40 object-contain" />
         </div>
         <div style="margin-top:12px">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
@@ -402,3 +414,4 @@
   </script>
 </body>
 </html>
+
